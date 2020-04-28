@@ -38,7 +38,7 @@ Samples | 338 | 398 | 750 | 630 | 516 | 254 | 791 | 620
 The data was mined from four German online dictionaries.
 Each dictionary got a reliability score.
 The dictionaries were:
-- [dwds])(https://www.dwds.de/) (0.5)
+- [dwds](https://www.dwds.de/) (0.5)
 - [duden](https://www.duden.de/) (1.0)
 - [synonyme_de](https://www.synonyme.de/)(1.0)
 - [wordassosiactions](https://wordassociations.net/de/) (0.8)
@@ -58,8 +58,11 @@ Project is created with:
 ## Setup
 Download or clone this repository.
 
-## Todo
-- Add words from comparing emotions on dwds
-- Add stemmed and regularized versions.
-- Add sample project.
-- Add stop words (remove stop words from emotions)
+An (easy) function on how to read the CSV file can be found at ```./bin/manage_files.py``` (def load_csv_file) 
+
+## Todo  
+
+- [ ] Add words from comparing emotions on dwds
+- [ ] Add stemmed and regularized versions.
+- [ ] Add sample project.
+- [ ] Add stop words (remove stop words from emotions)
