@@ -30,7 +30,7 @@ Values are not scaled!
 Duplicates are possible  
 
 Emotion | love | disgust | joy | fright | anger | contempt | grief | surprise
---- | --- | --- | --- | --- | --- | --- |--- | --- | --- | --- | ---
+--- | --- | --- | --- | --- | --- | --- |--- | ---
 Samples | 338 | 398 | 750 | 630 | 516 | 254 | 791 | 620
 
 
