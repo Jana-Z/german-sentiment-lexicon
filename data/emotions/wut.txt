@@ -514,4 +514,3 @@ zähneknirschend,1.0
 ätzend,1.0
 übellaunig,1.0
 übelnehmen,1.0
-überschnappenherausschreien,1.0
