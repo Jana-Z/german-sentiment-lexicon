@@ -25,9 +25,9 @@ The lexicon is compossed of word assosociated with (number of samples):
 ### Emotions
 Contains 8 txt files.
 Each labeled according to one feeling: ('ekel', 'furcht', 'trauer', 'überraschung', 'verachtung', 'wut', 'freude', 'liebe')
-After each word there is a score of how often the word appeared as a assosiaction.
-Values are not scaled!
-Duplicates are possible
+After each word there is a score of how often the word appeared as a assosiaction.  
+Values are not scaled!  
+Duplicates are possible  
 
 Emotion | love | disgust | joy | fright | anger | contempt | grief | surprise
 --- | --- | --- | --- | --- | --- | --- |--- | --- | --- | --- | ---
