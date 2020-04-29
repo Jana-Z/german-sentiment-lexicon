@@ -1,11 +1,10 @@
 import unittest
 
-from stemming import Stemming
+from stemming import stem
 
 class TestStemming(unittest.TestCase):
 
     def test_stem(self):
-        stemmer = Stemming()
         words = [
             'aufeinander',
             'aufeinanderbiss',
@@ -25,7 +24,7 @@ class TestStemming(unittest.TestCase):
             'auffallender',
             'auffällig',
             'auffälligen',
-            'auffälliges',
+            'auffälliges'
             
         ]
         stems = [
@@ -49,7 +48,7 @@ class TestStemming(unittest.TestCase):
             'auffall',
             'auffall'
         ]
-        results = [stemmer.stem(word) for word in words]
+        results = [stem(word) for word in words]
         self.assertEqual(results, stems)
 
 

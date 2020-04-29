@@ -36,6 +36,7 @@ Samples | 904 | 510 | 1261 | 1052 | 990 | 2567 | 1243 | 995
 
 
 ## Ressources
+### Emotions
 The data was mined from four German online dictionaries.
 Each dictionary got a reliability score.
 The dictionaries were:
@@ -48,7 +49,17 @@ The sites mined for words assosiacted with this feeling. The reliability scores 
 
 This step was repeated for the most important assosiactions.
 
-For every emotion (except for love) feelings from (Roman Klinger and Surayya Samat Suliya)[https://bitbucket.org/rklinger/german-emotion-dictionary/src/master/] were added with a score of 1.0.
+For every emotion (except for love) feelings from [Roman Klinger and Surayya Samat Suliya](https://bitbucket.org/rklinger/german-emotion-dictionary/src/master/) were added with a score of 1.0.
+
+### Stop words
+The stop words are a stemmed combination of the following lists of german stop words:
+- [solariz](https://github.com/solariz/german_stopwords/blob/master/german_stopwords_full.txt)
+- [stopwords-iso](https://github.com/stopwords-iso/stopwords-de/blob/master/stopwords-de.txt)
+- [snowball](https://snowballstem.org/algorithms/german/stop.txt)
+- [Roman Klinger and Surayya Samat Suliya](https://bitbucket.org/rklinger/german-emotion-dictionary/src/master/)
+
+### Stemmming
+The general idea for the algorithm was taken from [Snowball](https://snowballstem.org/algorithms/german/stemmer.html)
 
 ## Technologies
 Project is created with:
@@ -63,7 +74,8 @@ An (easy) function on how to read the CSV file can be found at ```./bin/manage_f
 
 ## Todo  
 
-- [ ] Add words from comparing emotions on dwds
-- [ ] Add stemmed and regularized versions.
+- [x] Add words from comparing emotions on dwds
+- [x] Add stemmed and regularized versions.
 - [ ] Add sample project.
-- [ ] Add stop words (remove stop words from emotions)
+- [x] Add stop words
+- [ ] remove stop words from emotions
