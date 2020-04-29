@@ -6,18 +6,18 @@ from stemming import stem
 
 EMOTIONLIST = ['ekel', 'furcht', 'trauer', 'überraschung', 'verachtung', 'wut', 'freude', 'liebe']
 PATH_STOP_WORDS = '../data/stopwords.txt'
-DST_DIR: '../data/emotions/raw/'
+DST_DIR = '../data/emotions stemmed/'
 
-def main(dst_dir, regulize=True, unique_words=True, stem_words=True):
-    emotionlist = ['ekel', 'furcht', 'trauer', 'überraschung', 'verachtung', 'wut', 'freude', 'liebe']
-
-    path_stop_words = '../data/stopwords.txt'
+def main(regulize=True, unique_words=True, stem_words=True):
+    global EMOTIONLIST
+    global PATH_STOP_WORDS
+    global DST_DIR
 
     
-    remove_stop_words(dst_dir, EMOTIONLIST)
-    if unique_words: handle_dupilcates(dst_dir, emotionlist)
-    if regulize: regularize_data(dst_dir, EMOTIONLIST)
-    if stem_words: stem_emotions(dir_no_duplicates, emotionlist)
+    remove_stop_words(PATH_STOP_WORDS, DST_DIR, EMOTIONLIST)
+    if unique_words: handle_dupilcates(DST_DIR, EMOTIONLIST)
+    if regulize: regularize_data(DST_DIR, EMOTIONLIST)
+    if stem_words: stem_emotions(DST_DIR, EMOTIONLIST)
 
 def cleanse_stopwords():
     stem_words(PATH_STOP_WORDS)
