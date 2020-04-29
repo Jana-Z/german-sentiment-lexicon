@@ -19,6 +19,7 @@ The lexicon is compossed of word assosociated with (number of samples):
 - contempt / verachtung
 - grief / trauer
 - surprise / überraschung
+These emotions are roughly based on [Paul Ekman's theory of emotions](https://en.wikipedia.org/wiki/Paul_Ekman#Emotions_as_universal_categories).
 
 ## File structure / Documentation
 

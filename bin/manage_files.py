@@ -2,17 +2,23 @@ import os
 import sys
 import csv
 
-from flesch_kincaid_readability import *
 from fundementals import convert_umlaute, \
     count_words, capitalize
 
-def add_local_emotions(dirpath_src, dirpath_dst)
-    emotionlist = ['furcht', 'trauer', 'überraschung', 'verachtung', 'wut', 'freude']
+def add_local_emotions(dirpath_src, dirpath_dst, score, \
+    emotionlist=                    \
+            ['furcht',              \
+            'trauer',               \
+            'überraschung',         \
+            'verachtung',           \
+            'wut',                  \
+            'freude']):
 
     for emotion in emotionlist:
         add_file_to_csv(
             os.path.join(dirpath_src, emotion + '.txt'),
             os.path.join(dirpath_dst, emotion + '.txt'),
+            score
         )
 
 def add_to_csv(filepath, dict_to_be_saved):
@@ -21,9 +27,9 @@ def add_to_csv(filepath, dict_to_be_saved):
     if os.path.isfile(filepath):
         with open(filepath,'r', newline = '') as f:
             reader = csv.reader(f, delimiter=',')
-            content = [l.strip() for l in reader] if not reader else []
+            content = [l for l in reader] if reader else []
 
-        content = dict(content) if not content else {}
+        content = dict(content) if content else {}
         for addition, score in dict_to_be_saved.items():
             additon = addition.strip()
             if addition not in content:
@@ -55,11 +61,11 @@ def load_csv_file(filepath, threshold=None):
         print(f'{filepath} is not a path to a file')
         return None
 
-def add_file_to_csv(filepath_src, filepath_dst):
+def add_file_to_csv(filepath_src, filepath_dst, score):
     print(return_file_by_line(filepath_src))
     content_new = dict.fromkeys(
         return_file_by_line(filepath_src),
-        1.0
+        score
     )
     add_to_csv(filepath_dst, content_new)
 
@@ -72,6 +78,15 @@ def return_file_by_line(filepath):
         print(f'{filepath} is not a path to a file')
         return None
 
+def write_csv_file(filepath, data_dict):
+    if os.path.isfile(filepath):
+        with open(filepath, 'w') as f:
+            writer = csv.writer(f, delimiter=',')
+            for row in data_dict.items():
+                writer.writerow(list(row))
+    else:
+        print(f'{filepath} is not a path to a file')
+        return None   
 
 # development functions
 def clean_all_files_in_dir(dirpath):

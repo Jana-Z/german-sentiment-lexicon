@@ -11,11 +11,24 @@ from fundementals import convert_umlaute, \
     count_words, capitalize
 from manage_files import *
 
+#folder where emotions schould be stored
+DIRPATH_DST = '../data/emotions/'
+
+# folder from https://bitbucket.org/rklinger/german-emotion-dictionary/src/master/
+DIRTHPATH_SRC='../data/delete/'
+
 def main():
     emotionlist = ['ekel', 'furcht', 'trauer', 'überraschung', 'verachtung', 'wut', 'freude', 'liebe']
 
-    get_first_degree_assosiactions('./emotions/', emotionlist)
-    get_second_degree_assosiactions('./emotions/', emotionlist)
+    get_comparisions_from_dwds(DIRPATH_DST, emotionlist)
+    get_first_degree_assosiactions(DIRPATH_DST, emotionlist)
+    get_second_degree_assosiactions(DIRPATH_DST, emotionlist)
+    
+    add_local_emotions(
+        dirpath_src=DIRTHPATH_SRC,
+        dirpath_dst=DIRPATH_DST,
+        score=3.0
+    )
 
 def get_assosications_from_wordassociations(word):
     # needs umlaute to work
@@ -196,7 +209,6 @@ def get_second_degree_assosiactions(dirpath, emotionlist):
                     if score > 0.5
                 ))
 
-# Not yet used:
 def adding_words_using_comparison_on_dwds(reference, comparison):
     # expects refernce and comparison to be words and wordlist to be a list
     url = 'https://www.dwds.de/wp?q=' + reference + '&comp-method=diff&comp=' + comparison + '&pos=2&minstat=0&minfreq=5&by=logDice&limit=100&view=table'
@@ -233,5 +245,38 @@ def adding_words_using_comparison_on_dwds(reference, comparison):
     return words_belonging_to
 
 def get_comparisions_from_dwds(dirpath, emotionlist):
-    pass
+    reliability = 0.5
 
+    all_combinations = set()
+    for emotion1 in emotionlist:
+        for emotion2 in emotionlist:
+            if emotion1 is not emotion2:
+                all_combinations.add(
+                    tuple(sorted((emotion1, emotion2)))
+                )
+    new_assosiactions = dict.fromkeys(emotionlist)
+    for combination in all_combinations:
+        reference = combination[0]
+        if not new_assosiactions[reference]:
+            new_assosiactions[reference] = set() 
+        comparison = combination[1]
+        if not new_assosiactions[comparison]:
+            new_assosiactions[comparison] = set()
+        addition_reference, addition_comparision =  \
+            adding_words_using_comparison_on_dwds(reference, comparison).values()
+        new_assosiactions[reference].update(addition_reference)
+        new_assosiactions[comparison].update(addition_comparision)
+        print(new_assosiactions)
+
+    for emotion in new_assosiactions:
+        add_to_csv(
+            os.path.join(dirpath, emotion + '.txt'),
+            dict.fromkeys(
+                new_assosiactions[emotion],
+                reliability
+            )
+        )
+
+
+if __name__ == '__main__':
+    main()
