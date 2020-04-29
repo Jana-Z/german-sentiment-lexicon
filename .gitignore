@@ -23,3 +23,6 @@ node_modules
 
 # Webdriver
 geckodriver.log
+
+# data
+src/

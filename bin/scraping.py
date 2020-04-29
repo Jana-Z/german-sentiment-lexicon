@@ -15,18 +15,19 @@ from manage_files import *
 DIRPATH_DST = '../data/emotions/'
 
 # folder from https://bitbucket.org/rklinger/german-emotion-dictionary/src/master/
-DIRTHPATH_SRC='../data/delete/'
+DIRTHPATH_SRC='../data/src/'
 
 def main():
     emotionlist = ['ekel', 'furcht', 'trauer', 'überraschung', 'verachtung', 'wut', 'freude', 'liebe']
 
-    get_comparisions_from_dwds(DIRPATH_DST, emotionlist)
     get_first_degree_assosiactions(DIRPATH_DST, emotionlist)
     get_second_degree_assosiactions(DIRPATH_DST, emotionlist)
+    get_comparisions_from_dwds(DIRPATH_DST, emotionlist)
     
     add_local_emotions(
         dirpath_src=DIRTHPATH_SRC,
         dirpath_dst=DIRPATH_DST,
+        emotionlist=emotionlist,
         score=3.0
     )
 
@@ -266,7 +267,6 @@ def get_comparisions_from_dwds(dirpath, emotionlist):
             adding_words_using_comparison_on_dwds(reference, comparison).values()
         new_assosiactions[reference].update(addition_reference)
         new_assosiactions[comparison].update(addition_comparision)
-        print(new_assosiactions)
 
     for emotion in new_assosiactions:
         add_to_csv(

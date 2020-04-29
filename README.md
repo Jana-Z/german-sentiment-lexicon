@@ -32,7 +32,7 @@ Duplicates are possible
 
 Emotion | love | disgust | joy | fright | anger | contempt | grief | surprise
 --- | --- | --- | --- | --- | --- | --- |--- | ---
-Samples | 338 | 398 | 750 | 630 | 516 | 254 | 791 | 620
+Samples | 904 | 510 | 1261 | 1052 | 990 | 2567 | 1243 | 995
 
 
 ## Ressources
@@ -48,7 +48,7 @@ The sites mined for words assosiacted with this feeling. The reliability scores 
 
 This step was repeated for the most important assosiactions.
 
-For every emotion (but love and conrempt) feelings from (Roman Klinger and Surayya Samat Suliya)[https://bitbucket.org/rklinger/german-emotion-dictionary/src/master/] were added with a score of 1.0.
+For every emotion (except for love) feelings from (Roman Klinger and Surayya Samat Suliya)[https://bitbucket.org/rklinger/german-emotion-dictionary/src/master/] were added with a score of 1.0.
 
 ## Technologies
 Project is created with:

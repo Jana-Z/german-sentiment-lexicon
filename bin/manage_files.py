@@ -12,6 +12,7 @@ def add_local_emotions(dirpath_src, dirpath_dst, score, \
             'überraschung',         \
             'verachtung',           \
             'wut',                  \
+            'ekel',                 \
             'freude']):
 
     for emotion in emotionlist:
@@ -42,8 +43,7 @@ def add_to_csv(filepath, dict_to_be_saved):
             for row in content.items():
                 writer.writerow(list(row))
     else:
-        print(f'{filepath} is not a path to a file')
-        return None
+        raise OSError(f'{filepath} is not a path to a file')
 
 def load_csv_file(filepath, threshold=None):
     # comma seperated
@@ -58,11 +58,9 @@ def load_csv_file(filepath, threshold=None):
                     for key, value in dict(reader).items()  
                     if float(value) > threshold)
     else:
-        print(f'{filepath} is not a path to a file')
-        return None
+        raise OSError(f'{filepath} is not a path to a file')
 
 def add_file_to_csv(filepath_src, filepath_dst, score):
-    print(return_file_by_line(filepath_src))
     content_new = dict.fromkeys(
         return_file_by_line(filepath_src),
         score
@@ -75,8 +73,7 @@ def return_file_by_line(filepath):
             content = f.readlines()
         return [c.strip() for c in content]
     else:
-        print(f'{filepath} is not a path to a file')
-        return None
+        raise OSError(f'{filepath} is not a path to a file')
 
 def write_csv_file(filepath, data_dict):
     if os.path.isfile(filepath):
@@ -85,8 +82,7 @@ def write_csv_file(filepath, data_dict):
             for row in data_dict.items():
                 writer.writerow(list(row))
     else:
-        print(f'{filepath} is not a path to a file')
-        return None   
+        raise OSError(f'{filepath} is not a path to a file')   
 
 # development functions
 def clean_all_files_in_dir(dirpath):
