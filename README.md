@@ -23,16 +23,40 @@ These emotions are roughly based on [Paul Ekman's theory of emotions](https://en
 
 ## File structure / Documentation
 
-### Emotions
-Contains 8 txt files.
+All folders contain8 txt files.
 Each labeled according to one feeling: ('ekel', 'furcht', 'trauer', 'überraschung', 'verachtung', 'wut', 'freude', 'liebe')
-After each word there is a score of how often the word appeared as a assosiaction.  
-Values are not scaled!  
-Duplicates are possible  
+After each word there is a score of how often the word appeared as a assosiaction.
+
+### Emotions raw 
+Scores are not scaled.    
+Duplicates are possible.   
+Words are not stemmed.   
 
 Emotion | love | disgust | joy | fright | anger | contempt | grief | surprise
 --- | --- | --- | --- | --- | --- | --- |--- | ---
 Samples | 904 | 510 | 1261 | 1052 | 990 | 2567 | 1243 | 995
+
+### Emotions regularized
+Values are scaled from 0 to 1.0.  
+Words with small values are excluded.  
+Duplicates are possible.  
+
+Emotion | love | disgust | joy | fright | anger | contempt | grief | surprise
+--- | --- | --- | --- | --- | --- | --- |--- | ---
+Samples | 457 | 483 | 929 | 786 | 723 | 2442 | 988 | 740
+
+### Emotions stemmed
+Values are scaled from 0 to 1.0.  
+Words with small values are excluded.  
+Duplicates are possible.  
+Words are stemmed using stem() in ./bin/stemming.py.  
+Words with the same stem are assigned the highest value of their cluster. 
+Words from ./data/stopwords.txt are excluded.
+
+Emotion | love | disgust | joy | fright | anger | contempt | grief | surprise
+--- | --- | --- | --- | --- | --- | --- |--- | ---
+Samples | 201 | 191 | 512 | 300 | 282 | 1795 | 441 | 402
+
 
 
 ## Ressources
@@ -78,4 +102,4 @@ An (easy) function on how to read the CSV file can be found at ```./bin/manage_f
 - [x] Add stemmed and regularized versions.
 - [ ] Add sample project.
 - [x] Add stop words
-- [ ] remove stop words from emotions
+- [x] remove stop words from emotions
