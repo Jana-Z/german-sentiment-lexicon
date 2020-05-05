@@ -2,12 +2,12 @@
 A lexicon to be used for German emotion detection
 
 ## Table of Contents
-- General info
-- File structure / Documentation
-- Ressources
-- Technologies
-- Setup
-- Todo
+- [General info](#General-Info)
+- [File structure / Documentation](#File-structure-/-Documentation)
+- [Ressources](#Ressources)
+- [Technologies](#Technologies)
+- [Setup](#Setup)
+- [Sample Project](#Sample-Project)
 
 ## General info
 The lexicon is compossed of word assosociated with (number of samples):
@@ -96,10 +96,9 @@ Download or clone this repository.
 
 An (easy) function on how to read the CSV file can be found at ```./bin/manage_files.py``` (def load_csv_file) 
 
-## Todo  
+## Sample Project
+This sentiment lexicon, stopwords and stemming algorithm were used in [this exploration](https://github.com/Jana-Z/sentiments_in_german_political_speeches) of word choice in German political speeches.
 
-- [x] Add words from comparing emotions on dwds
-- [x] Add stemmed and regularized versions.
-- [ ] Add sample project.
-- [x] Add stop words
-- [x] remove stop words from emotions
+Plot from the project:
+
+![alt text](https://raw.githubusercontent.com/Jana-Z/sentiments_in_german_political_speeches/master/sentiments_in_political_speeches/plotting/plots_big/emotions/means/all.png "Sentiments over time")
