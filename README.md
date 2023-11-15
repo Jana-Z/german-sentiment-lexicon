@@ -14,7 +14,7 @@ The lexicon is compossed of word assosociated with (number of samples):
 - love / liebe
 - disgust / ekel
 - joy / freude
-- fright / angst
+- fright / furcht
 - anger / wut
 - contempt / verachtung
 - grief / trauer
